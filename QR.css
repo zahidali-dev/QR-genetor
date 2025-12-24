@@ -1,0 +1,208 @@
+.h2 + #theme-toggle {
+    position: absolute;
+    right: 24px;
+    top: 24px;
+    padding: 8px 10px;
+    border-radius: 12px;
+    border: 1px solid var(--control-border);
+    background: var(--control-bg);
+    color: var(--text-color);
+    box-shadow: var(--shadow-sm);
+    cursor: pointer;
+    transition: transform 0.1s ease, box-shadow 0.2s ease;
+}
+.h2 + #theme-toggle:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+.h2 + #theme-toggle:active { transform: translateY(1px) scale(0.99); }
+/* Theming via CSS variables */
+:root {
+    /* Sky Fresh vibe */
+    --bg-gradient-1: #f0f9ff; /
+    --bg-gradient-2: #e0f2fe; 
+    --bg-gradient-3: #bae6fd; 
+    --bg-gradient-4: #dbeafe; 
+    --bg-gradient-5: #ffffff;
+
+    --card-bg: #3d5a80;
+    --card-border: rgba(15, 15, 15, 0.2);
+    --text-color: #0f0f0f;
+    --text-on-card: #f9fafb;
+    --control-border: rgba(15, 15, 15, 0.15);
+    --control-bg: #ffffff;
+    --shadow-sm: 0 2px 6px rgba(0,0,0,0.08);
+    --shadow-md: 0 12px 24px rgba(0,0,0,0.15);
+    --shadow-md-hover: 0 16px 32px rgba(0,0,0,0.2);
+}
+
+
+ * {
+    margin: 0;
+    padding: 0;
+    
+    
+ }
+body{
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center; 
+        align-items: center;     
+        background: linear-gradient(135deg, var(--bg-gradient-1) 0%, var(--bg-gradient-2) 25%, var(--bg-gradient-3) 50%, var(--bg-gradient-4) 85%, var(--bg-gradient-5) 100%);
+        /* Subtle accent blobs similar to Tailwind aesthetic */
+        background-image:
+            radial-gradient(120px 120px at 15% 25%, rgba(14,165,233,0.12), transparent 65%), /* sky-500 */
+            radial-gradient(160px 160px at 85% 75%, rgba(2,132,199,0.10), transparent 65%),  /* sky-600 */
+            linear-gradient(135deg, var(--bg-gradient-1) 0%, var(--bg-gradient-2) 25%, var(--bg-gradient-3) 50%, var(--bg-gradient-4) 85%, var(--bg-gradient-5) 100%);
+        background-blend-mode: soft-light, soft-light, normal;
+        background-repeat: no-repeat;
+        font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+.main {
+    width: 600px;
+    min-height: 450px;
+    border: 2px solid var(--card-border);
+    border-radius: 14px;
+    background-color: var(--card-bg);
+    margin: 0 auto; /* ensure centered if flex not applied */
+    color: var(--text-on-card);
+    padding: 16px;
+    box-shadow: var(--shadow-md);
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+.main:hover { box-shadow: var(--shadow-md-hover); }
+
+.h2 {
+    text-align: center;
+    margin-top: 12px;
+    margin-bottom: 8px;
+    color: #f9fafb;
+    letter-spacing: 0.3px;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+
+#url{
+    display: block;
+    width: 80%;
+    padding: 10px 12px;
+    border-radius: 12px;
+    border: 1px solid var(--control-border);
+    margin: 10px auto; /* center input */
+    background: var(--control-bg);
+    color: var(--text-color);
+    box-shadow: var(--shadow-sm);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.05s ease;
+}
+#url:hover { border-color: rgba(61, 90, 128, 0.5); }
+#url:focus { outline: none; border-color: #94b8d9; box-shadow: 0 0 0 3px rgba(148,184,217,0.35); }
+
+#btn{
+    display: block;
+    width:40%;
+    padding: 12px;
+    border: 1px solid var(--control-border);
+    border-radius: 14px;
+    font-size: 16px;
+    color: var(--text-color);
+    font-weight: bold;
+    margin: 12px auto; /* center button */
+    background-color: var(--control-bg);
+    cursor: pointer;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.1s ease, box-shadow 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+#btn:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.15); border-color: rgba(61, 90, 128, 0.4); }
+#btn:active { transform: translateY(1px) scale(0.99); }
+
+/* QR render area + scaling */
+/* QR + button layout */
+#qr-container{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center; /* center row */
+    gap: 12px; /* small distance between QR and button */
+    margin: 16px auto 0;
+    margin-left: 20%;
+}
+
+#qr-container:not(.generated){
+    justify-content: center; /* before QR exists, center the button */
+}
+
+#qr-container.generated{
+    justify-content: flex-start; /* after QR generated, QR left, button right */
+}
+
+#qr{
+    width: 200px; /* default display size */
+    min-width: 100px;
+    max-width: 300px; /* limit max visual size via CSS */
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#qr canvas, #qr img{
+    width: 100% !important; /* scale canvas/img to container width */
+    height: auto !important;
+    display: block;
+}
+#qr:hover { transform: translateY(-2px); box-shadow: 0 10px 22px rgba(0,0,0,0.2); }
+
+#select{
+    width: 160px;
+    height: 38px;
+    border: 1px solid var(--control-border);
+    border-radius: 10px;
+    padding: 6px 10px;
+    background: var(--control-bg);
+    color: var(--text-color);
+    box-shadow: var(--shadow-sm);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+#select:hover { border-color: rgba(61, 90, 128, 0.4); }
+#select:focus { outline: none; border-color: #94b8d9; box-shadow: 0 0 0 3px rgba(148,184,217,0.35); }
+
+#size{
+ font-weight: bolder;
+    color:  var(--text-on-card);
+ font-size: 16px;
+ text-shadow: 0 1px 1px rgba(0,0,0,0.2);
+}
+
+.box{
+    display: flex;
+    justify-content: center; /* center children */
+    align-items: center;
+    gap: 12px; /* spacing between label and select */
+    width: 100%;
+    max-width: 400px;
+    margin: 12px auto 0; /* center the box inside .main */
+    font-weight: bold;
+    color:  #f9fafb;
+    padding: 6px 0;
+}
+
+#download{
+    width: 140px;
+    height: 42px;
+    border-radius:14px;
+    outline: none;
+    border: 1px solid var(--control-border);
+    font-weight: 600;
+    background: linear-gradient(180deg, var(--control-bg) 0%, #f9fafb 100%);
+    text-transform:uppercase;
+    cursor: pointer;
+    color: var(--text-color);
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.1s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+#download:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.15); border-color: rgba(61, 90, 128, 0.4); }
+#download:active { transform: translateY(1px) scale(0.99); }
+
+
+
+
+.qr-body img{
+    max-width: 100%;
+}
