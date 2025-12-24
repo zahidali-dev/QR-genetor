@@ -1,59 +1,72 @@
+QR Code Generator
+A simple, fast and responsive QR Code Generator built with HTML, CSS and JavaScript.
+Type any text, number or URL, choose a size, and download the generated QR code as a PNG image.
 
+🌐 Live Demo
+🔗 https://zahidali-dev.github.io/QR-genetor/
 
-# QR Code Generator
+Preview
+![QR Code Generator UI](
 
-Simple and clean QR Code Generator web app built with **HTML, CSS and JavaScript**.  
-Type any text, number or URL, pick a size, and instantly get a downloadable QR code image.
+🛠️ Tech Stack
+HTML5
 
----
+Modern CSS (flexbox, gradients, custom properties)
 
-## Features
+Vanilla JavaScript
 
-- Generate QR codes for text, phone numbers, links and more  
-- Multiple size options (100×100 up to 1000×1000)  
-- Clean UI with centered layout and smooth shadows  
-- Download QR code as PNG with a single click  
-- Responsive layout that works nicely on desktop and laptop screens
+qrcodejs library for generating QR codes
 
----
+📁 Features
+Generate QR codes for text, phone numbers, links and more
 
-## Tech Stack
+Multiple size options (100×100 up to 1000×1000)
 
-- HTML5  
-- Modern CSS (flexbox, gradients, custom properties)  
-- Vanilla JavaScript  
-- [qrcodejs](https://cdnjs.com/libraries/qrcodejs) library for generating QR codes
+Clean UI with centered layout and smooth shadows
 
----
+Download QR code as PNG with a single click
 
-## How to Use
+Responsive layout that works nicely on desktop and laptop screens
 
-1. Open the app in your browser.  
-2. Enter any **text / URL / number** in the input field.  
-3. Select the **size** of the QR code from the dropdown.  
-4. Click **“Generate QR Code”**.  
-5. Click the **“Download”** button to save the QR as a PNG file.
+🚀 Getting Started
+Clone the repo
 
----
+git clone https://github.com/zahidali-dev/QR-genetor.git
+cd QR-genetor
 
-## Project Structure
+Open in browser
 
-- `QR.html` – main page and UI  
-- `QR.css` – styles and layout  
-- `QR.js` – JavaScript logic for QR generation and download
+Directly open index.html / QR.html in any browser
 
----
+Or use VS Code Live Server extension
 
-## Future Improvements
+📂 Project Structure
+QR-genetor/
+├── QR.html # Main UI
+├── QR.css # Styles and layout
+├── QR.js # QR generation + download logic
+├── assets/
+│ └── qr-demo.png # Screenshot used in README
+└── README.md
 
-- Dark / light theme toggle  
-- Error state / validation messages below the input  
-- Option to add logo in the center of QR  
-- Mobile‑first responsive adjustments
+⚙️ How It Works
+JavaScript input field se value read karta hai
 
----
+Selected size ke basis par QRCode library ko configure karta hai
 
-## Demo
+Library QR code ko <div id="qr"> ke andar render karti hai
 
-I recorded a small demo video of the project showing QR generation and download flow.  
-You can watch it here: **[add your demo link here]**
+Download button canvas ko PNG me convert karke user ko save karne deta hai
+
+🌟 Future Improvements
+Dark / light theme toggle
+
+Error / validation message below the input
+
+Option to add logo in the center of QR
+
+Better mobile layout and spacing
+
+❤️ Credits
+Created with curiosity and practice by Zahid Ali.
+If this project helps you, feel free to ⭐ the repository.
